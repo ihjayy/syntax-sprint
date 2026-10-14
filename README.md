@@ -1,10 +1,10 @@
-# ⚡ SyntaxSprint
+# SyntaxSprint
 
 > A developer-focused typing platform designed to build muscle memory for actual code syntax, symbols, and language structural patterns rather than plain English prose.
 
 ---
 
-## ⚡ Overview
+## Overview
 
 Standard typing tests focus on prose, which fails to prepare developers for the ergonomic demands of programming. **SyntaxSprint** challenges software engineers with real-world code snippets across **TypeScript, SQL, HTML, CSS, and Python**. 
 
@@ -12,7 +12,7 @@ Built as an offline-first **Progressive Web App (PWA)**, SyntaxSprint measures s
 
 ---
 
-## 🚀 Tech Stack
+## Tech Stack
 
 ### **Frontend**
 * **Framework:** React 18 (Vite)
