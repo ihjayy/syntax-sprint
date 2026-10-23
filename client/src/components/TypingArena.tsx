@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { tokenizeCode } from '../utils/tokenizer';
 import { calculateMetrics } from '../utils/metrics';
+import '../styles/TypingArena.css';
 
 interface TypingArenaProps {
   codeSnippet: string;
@@ -29,7 +30,6 @@ export const TypingArena: React.FC<TypingArenaProps> = ({ codeSnippet, onTestCom
     const val = e.target.value;
     if (!startTime) setStartTime(Date.now());
 
-    // Key Miss Tracking logic
     if (val.length > input.length) {
       const newCharIndex = val.length - 1;
       const expected = tokens[newCharIndex]?.char;
@@ -66,43 +66,36 @@ export const TypingArena: React.FC<TypingArenaProps> = ({ codeSnippet, onTestCom
   );
 
   return (
-    <div style={{ fontFamily: 'monospace', padding: '20px', background: '#1e1e1e', color: '#fff', borderRadius: '8px' }}>
-      {/* Header Stats */}
-      <div style={{ display: 'flex', gap: '20px', marginBottom: '20px', fontSize: '18px' }}>
-        <div>WPM: <strong>{metrics.wpm}</strong></div>
-        <div>Accuracy: <strong>{metrics.accuracy}%</strong></div>
-        <div>Time: <strong>{elapsedSeconds}s</strong></div>
+    <div className="arena-card">
+      {/* Header Live Metrics */}
+      <div className="stats-bar">
+        <div className="stat-item">WPM: <span className="stat-value">{metrics.wpm}</span></div>
+        <div className="stat-item">Accuracy: <span className="stat-value">{metrics.accuracy}%</span></div>
+        <div className="stat-item">Time: <span className="stat-value">{elapsedSeconds}s</span></div>
       </div>
 
-      {/* Invisible Focus Capturer */}
+      {/* Hidden Focus Capturer */}
       <textarea
         ref={inputRef}
         value={input}
         onChange={handleInputChange}
-        style={{ position: 'absolute', opacity: 0, pointerEvents: 'none' }}
+        className="hidden-input"
         autoFocus
       />
 
       {/* Typing Container */}
-      <div 
-        onClick={() => inputRef.current?.focus()} 
-        style={{ cursor: 'text', lineHeight: '1.6', fontSize: '18px', whiteSpace: 'pre-wrap' }}
-      >
+      <div className="code-display" onClick={() => inputRef.current?.focus()}>
         {tokens.map((t, i) => {
-          let color = '#666'; // pending
+          let statusClass = 'char-pending';
           if (i < input.length) {
-            color = input[i] === t.char ? '#4caf50' : '#f44336'; // correct vs incorrect
+            statusClass = input[i] === t.char ? 'char-correct' : 'char-incorrect';
           }
           const isCaret = i === input.length;
 
           return (
             <span
               key={i}
-              style={{
-                color,
-                borderLeft: isCaret ? '2px solid #00bcd4' : 'none',
-                backgroundColor: i < input.length && input[i] !== t.char ? 'rgba(244, 67, 54, 0.2)' : 'transparent',
-              }}
+              className={`char ${statusClass} ${isCaret ? 'char-caret' : ''}`}
             >
               {t.char}
             </span>

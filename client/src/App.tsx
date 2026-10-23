@@ -4,8 +4,8 @@ const sampleSnippet = `const syntaxSprint = () => {\n  return "Speed & Precision
 
 export default function App() {
   return (
-    <div style={{ maxWidth: '800px', margin: '40px auto', padding: '0 20px' }}>
-      <h1>SyntaxSprint Arena</h1>
+    <div className="app-container">
+      <h1 className="app-title">SyntaxSprint Arena</h1>
       <TypingArena 
         codeSnippet={sampleSnippet} 
         onTestComplete={(res) => console.log('Test Finished:', res)} 

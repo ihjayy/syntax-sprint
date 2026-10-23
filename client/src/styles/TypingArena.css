@@ -1,0 +1,76 @@
+.arena-card {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-lg);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* Header Live Metrics Grid */
+.stats-bar {
+  display: flex;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--border-color);
+  font-size: var(--font-size-stats);
+}
+
+.stat-item {
+  color: var(--text-muted);
+}
+
+.stat-value {
+  color: var(--text-main);
+  font-weight: 700;
+}
+
+/* Hidden Input Capture Layer */
+.hidden-input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  height: 0;
+  width: 0;
+}
+
+/* Code Display Box */
+.code-display {
+  cursor: text;
+  line-height: 1.6;
+  font-size: var(--font-size-code);
+  white-space: pre-wrap;
+  word-break: break-all;
+  user-select: none;
+}
+
+/* Individual Token Character Styles */
+.char {
+  position: relative;
+  transition: color 0.05s ease-in-out;
+}
+
+.char-pending {
+  color: var(--text-pending);
+}
+
+.char-correct {
+  color: var(--text-correct);
+}
+
+.char-incorrect {
+  color: var(--text-incorrect);
+  background-color: var(--bg-incorrect);
+  border-radius: 2px;
+}
+
+/* Caret Tracking Indicator */
+.char-caret {
+  border-left: 2px solid var(--accent-caret);
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { border-color: var(--accent-caret); }
+  50% { border-color: transparent; }
+}

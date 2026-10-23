@@ -1,0 +1,26 @@
+:root {
+  /* Color Palette */
+  --bg-primary: #1e1e1e;
+  --bg-surface: #252526;
+  --bg-incorrect: rgba(244, 67, 54, 0.2);
+  
+  --text-main: #ffffff;
+  --text-muted: #858585;
+  --text-pending: #666666;
+  --text-correct: #4caf50;
+  --text-incorrect: #f44336;
+  
+  --accent-caret: #00bcd4;
+  --border-color: #333333;
+
+  /* Typography */
+  --font-mono: 'Fira Code', 'JetBrains Mono', Consolas, Monaco, 'Courier New', monospace;
+  --font-size-stats: 1.125rem;
+  --font-size-code: 1.25rem;
+
+  /* Spacing & Radius */
+  --radius-md: 8px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 20px;
+}
